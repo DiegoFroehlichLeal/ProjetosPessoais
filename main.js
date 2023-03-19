@@ -1,14 +1,17 @@
+
 // criar o botão exluir em cada item da lista
-function createCloseButtom() {
+function createCloseAndTimeStamp() {
     let myNodeList = document.getElementsByTagName("LI");
-    let count;
-    for (count = 0; count < myNodeList.length; count++) {
-        let span = document.createElement("SPAN");
-        let txt = document.createTextNode("\u00D7");
-        span.className = "close"
-        span.appendChild(txt)
-        myNodeList[count].appendChild(span);
-    }
+    let div = document.createElement("div");
+    let span = document.createElement("SPAN");
+    let txt = document.createTextNode("\u00D7");
+    let time = document.createTextNode("Criado em " + getTimeNow());
+    div.className = "timeStamp"
+    span.className = "close"
+    div.appendChild(time)
+    span.appendChild(txt)
+    myNodeList[myNodeList.length - 1].appendChild(span);
+    myNodeList[myNodeList.length - 1].appendChild(div);
 }
 
 // esconde item quando clicar no x
@@ -43,7 +46,12 @@ function newElement() {
         document.getElementById("list").appendChild(li);
     }
     document.getElementById("inputText").value = "";
-    createCloseButtom()
+    createCloseAndTimeStamp();
     hideListItem();
     addChecked();
+}
+
+function getTimeNow() {
+    let dateTimeNow = moment().locale('pt-br').format('LLL');
+    return dateTimeNow;
 }

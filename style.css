@@ -51,7 +51,10 @@ ul li.checked::before {
     height: 15px;
     width: 7px;
 }
-
+.timeStamp{
+float: inline-end;
+padding-right: 100px;
+}
 /* estilo botão fechar  */
 .close {
     position: absolute;
